@@ -13,3 +13,6 @@ version-control markers.")
 (defvar version-control-diff-side 'left
   "Side on which to show version-control markers.
 Options are `left' and `right'.")
+
+;; 阻止smartparens对文字前的括号进行补全
+(add-hook 'smartparens-mode-hook 'spacemacs/toggle-smartparens-off)
