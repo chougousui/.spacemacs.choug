@@ -1,0 +1,11 @@
+dotspacemacs-maximized-at-startup t
+dotspacemacs-line-numbers t
+
+dotspacemacs-default-font '("Source Code Pro"
+                               :size 20
+                               :weight normal
+                               :width normal)
+
+dotspacemacs-excluded-packages '(
+                               vi-tilde-fringe
+                               )
