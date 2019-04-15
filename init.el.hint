@@ -9,3 +9,8 @@ dotspacemacs-default-font '("Source Code Pro"
 dotspacemacs-excluded-packages '(
                                vi-tilde-fringe
                                )
+
+
+###
+configuration-layer/create-layer
+ln -s ~/.spacemacs.d/choug choug
