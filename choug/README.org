@@ -14,8 +14,12 @@
 This layer adds support for something.
 
 ** Features:
-  - open php file with web-mode
-  - others
+  - swiper under helm
+  - swiper-dwim
+  - diff-hl on left side
+  - turn off smartparens
+  - expand-region
+  - chinese characters table under org(TODO)
 
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
@@ -24,9 +28,12 @@ file.
 
 * Key bindings
 
-| Key Binding | Description    |
-|-------------+----------------|
-| ~SPC x x x~ | Does thing01   |
+| Key Binding | Description       |
+|-------------+-------------------|
+| ~C-s~       | swiper            |
+| ~C-=~       | er/expand-region  |
+| ~C-S-s~     | choug/swiper-dwim |
+|             |                   |
 
 # Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
 # Examples:
