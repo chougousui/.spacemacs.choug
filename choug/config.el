@@ -16,3 +16,6 @@ Options are `left' and `right'.")
 
 ;; 阻止smartparens对文字前的括号进行补全
 (add-hook 'smartparens-mode-hook 'spacemacs/toggle-smartparens-off)
+
+;; 默认开启org-indent-mode
+(add-hook 'org-mode-hook 'org-indent-mode)
