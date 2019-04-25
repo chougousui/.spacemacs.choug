@@ -15,6 +15,10 @@ dotspacemacs-excluded-packages '(
   (spacemacs//set-monospaced-font "Source Code Pro" "华文楷体" 20 24)
   )
 
+(custom-set-variables
+ '(global-pangu-spacing-mode nil)
+ )
+
 ###
 configuration-layer/create-layer
 ln -s ~/.spacemacs.d/choug choug
