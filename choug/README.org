@@ -33,7 +33,7 @@ file.
 | ~C-s~       | swiper            |
 | ~C-=~       | er/expand-region  |
 | ~C-S-s~     | choug/swiper-dwim |
-|             |                   |
+| ~C-M-s~     | helm-projectile-ag|
 
 # Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
 # Examples:
