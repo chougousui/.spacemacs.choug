@@ -19,3 +19,6 @@ Options are `left' and `right'.")
 
 ;; 默认开启org-indent-mode
 (add-hook 'org-mode-hook 'org-indent-mode)
+
+;; 默认使用光标下的字符串作为helm-projectile-ag的搜索对象
+(setq helm-ag-insert-at-point 'symbol)
