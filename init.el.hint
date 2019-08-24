@@ -10,6 +10,11 @@ dotspacemacs-excluded-packages '(
                                vi-tilde-fringe
                                )
 
+dotspacemacs-additional-packages '(
+                                   swiper
+                                   helm-rg
+                                   )
+
 (defun dotspacemacs/user-config ()
   # 需要chinese layer
   (spacemacs//set-monospaced-font "Source Code Pro" "华文楷体" 20 24)
