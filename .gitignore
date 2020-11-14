@@ -9,3 +9,7 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+# env files
+.spacemacs.env
+init.el
