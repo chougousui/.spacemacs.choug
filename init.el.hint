@@ -12,14 +12,16 @@ dotspacemacs-excluded-packages '(
                                )
 
 dotspacemacs-additional-packages '(
-                                   helm-rg
                                    swiper
+                                   helm-rg
                                    ivy-hydra
                                    )
 
 (defun dotspacemacs/user-config ()
   # 需要chinese layer
-  (spacemacs//set-monospaced-font "Source Code Pro" "华文楷体" 20 24)
+  # 英文字体的size必须与dotspacemacs-default-font中的size完全一致,否则无法生效,10.0和10也不行
+  (spacemacs//set-monospaced-font "JetBrains Mono" "华文楷体" 27 32) linux/windows 4K
+  # (spacemacs//set-monospaced-font "JetBrains Mono" "华文楷体" 16 20) mac Retina
   )
 
 ###
