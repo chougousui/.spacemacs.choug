@@ -22,3 +22,7 @@ Options are `left' and `right'.")
 
 ;; 默认使用光标下的字符串作为helm-projectile-ag的搜索对象
 (setq helm-ag-insert-at-point 'symbol)
+
+;; (set-face-background 'git-gutter-fr:added "green")
+;; (set-face-background 'git-gutter-fr:modified "yellow")
+;; (set-face-background 'git-gutter-fr:deleted "red")

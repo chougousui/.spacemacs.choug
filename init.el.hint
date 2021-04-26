@@ -1,15 +1,24 @@
 dotspacemacs-maximized-at-startup t
 dotspacemacs-line-numbers t
 
+dotspacemacs-configuration-layers
+'(
+  (version-control :variables
+                   version-control-diff-tool 'git-gutter
+                   version-control-diff-side 'left)
+  chinese
+  choug
+  )
+
 dotspacemacs-default-font '("JetBrains Mono"
-                               :size 27         # 可能需要和下面的双字体配置对上
-                               :weight normal
-                               :width normal)
+                            :size 27         # 可能需要和下面的双字体配置对上
+                            :weight normal
+                            :width normal)
 
 dotspacemacs-excluded-packages '(
-                               vi-tilde-fringe
-                               pangu-spacing
-                               )
+                                 vi-tilde-fringe
+                                 pangu-spacing
+                                 )
 
 dotspacemacs-additional-packages '(
                                    swiper
@@ -24,6 +33,13 @@ dotspacemacs-additional-packages '(
   # (spacemacs//set-monospaced-font "JetBrains Mono" "华文楷体" 16 20) mac Retina
   )
 
-###
-configuration-layer/create-layer
-ln -s ~/.spacemacs.d/choug choug
+(defun dotspacemacs/emacs-custom-settings ()
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(git-gutter-fr:added ((t (:inherit bold :background "#67b11d" :foreground "#67b11d"))))
+   '(git-gutter-fr:deleted ((t (:inherit bold :background "#f2241f" :foreground "#f2241f"))))
+   '(git-gutter-fr:modified ((t (:inherit bold :background "#4f97d7" :foreground "#4f97d7")))))
+  )
