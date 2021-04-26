@@ -1,8 +1,8 @@
 dotspacemacs-maximized-at-startup t
 dotspacemacs-line-numbers t
 
-dotspacemacs-default-font '("Source Code Pro"
-                               :size 20
+dotspacemacs-default-font '("JetBrains Mono"
+                               :size 27         # 可能需要和下面的双字体配置对上
                                :weight normal
                                :width normal)
 
