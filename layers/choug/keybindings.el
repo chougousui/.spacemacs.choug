@@ -3,3 +3,6 @@
 (global-set-key (kbd "C-S-s") 'choug/swiper-dwim)
 (global-set-key (kbd "C-M-s") 'helm-projectile-ag)
 (global-set-key (kbd "C-;") 'iedit-mode)
+(global-set-key (kbd "<C-backspace>") 'choug/backward-delete-word-or-region)
+(global-set-key (kbd "M-DEL") 'choug/backward-delete-word-or-region)
+(global-unset-key (kbd "C-t"))
