@@ -35,15 +35,6 @@ dotspacemacs-additional-packages '(
     (set-face-background 'git-gutter-fr:added "#67b11d")
     (set-face-background 'git-gutter-fr:modified "#4f97d7")
     (set-face-background 'git-gutter-fr:deleted "#f2241f"))
-  )
-
-(defun dotspacemacs/emacs-custom-settings ()
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(git-gutter-fr:added ((t (:inherit bold :background "#67b11d" :foreground "#67b11d"))))
-   '(git-gutter-fr:deleted ((t (:inherit bold :background "#f2241f" :foreground "#f2241f"))))
-   '(git-gutter-fr:modified ((t (:inherit bold :background "#4f97d7" :foreground "#4f97d7")))))
+  (setq go-tab-width 4)
+  (setq org-startup-indented t)
   )
