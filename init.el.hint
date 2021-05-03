@@ -6,6 +6,13 @@ dotspacemacs-configuration-layers
   (version-control :variables
                    version-control-diff-tool 'git-gutter
                    version-control-diff-side 'left)
+  (go :variables                     ;; need install godoctor
+         go-tab-width 4
+         go-backend 'lsp             ;; need isntall gopls
+         godoc-at-point-function 'godoc-gogetdoc
+         gofmt-command "goimports"
+         go-format-before-save t
+         go-use-golangci-lint t)
   chinese
   choug
   )
@@ -35,6 +42,5 @@ dotspacemacs-additional-packages '(
     (set-face-background 'git-gutter-fr:added "#67b11d")
     (set-face-background 'git-gutter-fr:modified "#4f97d7")
     (set-face-background 'git-gutter-fr:deleted "#f2241f"))
-  (setq go-tab-width 4)
   (setq org-startup-indented t)
   )
