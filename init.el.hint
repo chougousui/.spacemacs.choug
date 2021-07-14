@@ -1,11 +1,18 @@
 dotspacemacs-maximized-at-startup t
 dotspacemacs-line-numbers t
+dotspacemacs-folding-method 'origami
 
 dotspacemacs-configuration-layers
 '(
   (version-control :variables
                    version-control-diff-tool 'git-gutter
                    version-control-diff-side 'left)
+  lsp
+  (python :variables
+             python-format-on-save t
+             python-sort-imports-on-save t
+             python-backend 'lsp
+             python-formatter 'lsp)
   (go :variables                     ;; need install godoctor
          go-tab-width 4
          go-backend 'lsp             ;; need isntall gopls
@@ -13,12 +20,20 @@ dotspacemacs-configuration-layers
          gofmt-command "goimports"
          go-format-before-save t
          go-use-golangci-lint t)
+  (typescript :variables
+                 typescript-backend 'tide
+                 typescript-fmt-on-save t)
+  (javascript :variables
+              javascript-backend 'tide
+              javascript-fmt-on-save t)
+  (treemacs :variables
+               treemacs-use-git-mode 'deferred)
   chinese
   choug
   )
 
 dotspacemacs-default-font '("JetBrains Mono"
-                            :size 27         # 可能需要和下面的双字体配置对上
+                            :size 27        ;; 需要和下面的双字体配置对上
                             :weight normal
                             :width normal)
 
@@ -34,13 +49,18 @@ dotspacemacs-additional-packages '(
                                    )
 
 (defun dotspacemacs/user-config ()
-  # 需要chinese layer
-  # 英文字体的size必须与dotspacemacs-default-font中的size完全一致,否则无法生效,10.0和10也不行
+  ;; 需要chinese layer
+  ;; 英文字体的size必须与dotspacemacs-default-font中的size完全一致,否则无法生效,10.0和10也是不同的.
   (spacemacs//set-monospaced-font "JetBrains Mono" "华文楷体" 27 32) linux/windows 4K
-  # (spacemacs//set-monospaced-font "JetBrains Mono" "华文楷体" 16 20) mac Retina
+  ;; (spacemacs//set-monospaced-font "JetBrains Mono" "华文楷体" 16 20) mac Retina
   (with-eval-after-load 'git-gutter-fringe ;;need git-gutter as diff tools
     (set-face-background 'git-gutter-fr:added "#67b11d")
     (set-face-background 'git-gutter-fr:modified "#4f97d7")
     (set-face-background 'git-gutter-fr:deleted "#f2241f"))
   (setq org-startup-indented t)
   )
+;;;;;;;;;;;;;; layers_+intl_chinese_config.el
++    (if (display-graphic-p)
+         (set-fontset-font (frame-parameter nil 'font) charset
+                           (font-spec :family chinese :size chinese-size))))
++    )
