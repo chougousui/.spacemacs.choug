@@ -4,6 +4,9 @@ dotspacemacs-folding-method 'origami
 
 dotspacemacs-configuration-layers
 '(
+  (auto-completion :variables
+                      auto-completion-minimum-prefix-length 2
+                      auto-completion-idle-delay 0.0)
   (version-control :variables
                    version-control-diff-tool 'git-gutter
                    version-control-diff-side 'left)
