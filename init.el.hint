@@ -20,7 +20,8 @@ dotspacemacs-configuration-layers
          go-tab-width 4
          go-backend 'lsp             ;; need isntall gopls
          godoc-at-point-function 'godoc-gogetdoc
-         gofmt-command "goimports"
+         gofmt-command "golines"     ;; need install golines
+         gofmt-args '("-m120")
          go-format-before-save t
          go-use-golangci-lint t)
   (typescript :variables
