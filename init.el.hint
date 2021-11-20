@@ -7,6 +7,9 @@ dotspacemacs-configuration-layers
   (auto-completion :variables
                       auto-completion-minimum-prefix-length 2
                       auto-completion-idle-delay 0.0)
+  (git :variables               ;; 需要安装delta
+          git-enable-magit-delta-plugin t
+          git-enable-magit-gitflow-plugin t)
   (version-control :variables
                    version-control-diff-tool 'git-gutter
                    version-control-diff-side 'left)
