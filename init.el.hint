@@ -13,6 +13,9 @@ dotspacemacs-configuration-layers
   (version-control :variables
                    version-control-diff-tool 'git-gutter
                    version-control-diff-side 'left)
+  (tabs :variables
+        tabs-auto-hide t
+        centaur-tabs-set-bar 'over)
   lsp
   (python :variables
              python-format-on-save t
@@ -52,6 +55,9 @@ dotspacemacs-configuration-layers
         json-fmt-tool 'prettier
         json-fmt-on-save t
         json-backend 'lsp)
+  (plantuml :variables
+            plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"
+            org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
   chinese
   choug
   )
