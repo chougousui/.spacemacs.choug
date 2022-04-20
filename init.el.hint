@@ -82,6 +82,8 @@ dotspacemacs-additional-packages '(
     (set-face-background 'git-gutter-fr:modified "#4f97d7")
     (set-face-background 'git-gutter-fr:deleted "#f2241f"))
   (setq org-startup-indented t)
+  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (add-hook 'web-mode-hook 'prettier-js-mode)
   )
 ;;;;;;;;;;;;;; layers_+intl_chinese_config.el
 +    (if (display-graphic-p)
