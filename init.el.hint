@@ -1,3 +1,5 @@
+dotspacemacs-read-process-output-max (* 2048 1024)
+dotspacemacs-scratch-mode 'org-mode
 dotspacemacs-maximized-at-startup t
 dotspacemacs-line-numbers t
 dotspacemacs-folding-method 'origami
@@ -18,11 +20,12 @@ dotspacemacs-configuration-layers
         centaur-tabs-set-bar 'over)
   lsp
   (python :variables
+             python-backend 'lsp
+             python-formatter 'black
              python-format-on-save t
              python-sort-imports-on-save t
-             python-backend 'lsp
-             python-formatter 'lsp)
-  (go :variables                     ;; need install godoctor
+             python-fill-column 119)
+  (go :variables
          go-tab-width 4
          go-backend 'lsp             ;; need isntall gopls
          godoc-at-point-function 'godoc-gogetdoc
@@ -30,6 +33,12 @@ dotspacemacs-configuration-layers
          gofmt-args '("-m120")
          go-format-before-save t
          go-use-golangci-lint t)
+  (sql :variables
+          sql-backend 'lsp
+          sql-lsp-sqls-workspace-config-path 'root
+          sql-capitalize-keywords t
+          sql-capitalize-keywords-blacklist '("name" "user")
+          sql-auto-indent t)
   (typescript :variables
                  typescript-backend 'lsp
                  typescript-fmt-tool 'prettier
@@ -52,9 +61,9 @@ dotspacemacs-configuration-layers
         web-mode-markup-indent-offset 2
         web-mode-sql-indent-offset 2)
   (json :variables
+        json-backend 'lsp
         json-fmt-tool 'prettier
-        json-fmt-on-save t
-        json-backend 'lsp)
+        json-fmt-on-save t)
   (plantuml :variables
             plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"
             org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
@@ -62,27 +71,24 @@ dotspacemacs-configuration-layers
   choug
   )
 
-dotspacemacs-default-font '("JetBrains Mono"
-                            :size 27        ;; 需要和下面的双字体配置对上
-                            :weight normal
-                            :width normal)
-
-dotspacemacs-excluded-packages '(
-                                 vi-tilde-fringe
-                                 pangu-spacing
-                                 )
-
 dotspacemacs-additional-packages '(
                                    swiper
                                    helm-rg
                                    ivy-hydra
                                    )
+dotspacemacs-excluded-packages '(
+                                 vi-tilde-fringe
+                                 pangu-spacing
+                                 )
+dotspacemacs-default-font '("JetBrains Mono"
+                            :size 27        ;; 需要和下面的双字体配置对上
+                            :weight normal
+                            :width normal)
 
 (defun dotspacemacs/user-config ()
   ;; 需要chinese layer
   ;; 英文字体的size必须与dotspacemacs-default-font中的size完全一致,否则无法生效,10.0和10也是不同的.
-  (spacemacs//set-monospaced-font "JetBrains Mono" "华文楷体" 27 32) linux/windows 4K
-  ;; (spacemacs//set-monospaced-font "JetBrains Mono" "华文楷体" 16 20) mac Retina
+  (spacemacs//set-monospaced-font "JetBrains Mono" "华文楷体" 27 32)
   (with-eval-after-load 'git-gutter-fringe ;;need git-gutter as diff tools
     (set-face-background 'git-gutter-fr:added "#67b11d")
     (set-face-background 'git-gutter-fr:modified "#4f97d7")
@@ -90,7 +96,10 @@ dotspacemacs-additional-packages '(
   (setq org-startup-indented t)
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'web-mode-hook 'prettier-js-mode)
-  )
+  (setq undo-tree-auto-save-history nil)
+  (setq warning-suppress-types '((comp)))
+  (setq fill-column 120)
+)
 ;;;;;;;;;;;;;; layers_+intl_chinese_config.el
 +    (if (display-graphic-p)
          (set-fontset-font (frame-parameter nil 'font) charset
