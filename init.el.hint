@@ -79,6 +79,8 @@ dotspacemacs-additional-packages '(
 dotspacemacs-excluded-packages '(
                                  vi-tilde-fringe
                                  pangu-spacing
+                                 pyim
+                                 pyim-basedict
                                  )
 dotspacemacs-default-font '("JetBrains Mono"
                             :size 27        ;; 需要和下面的双字体配置对上
