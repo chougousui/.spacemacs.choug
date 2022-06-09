@@ -42,24 +42,16 @@ dotspacemacs-configuration-layers
   (typescript :variables
                  typescript-backend 'lsp
                  typescript-fmt-tool 'prettier
-                 typescript-fmt-on-save t
-                 typescript-indent-level 2)
+                 typescript-fmt-on-save t)
   (javascript :variables
               javascript-fmt-tool 'prettier
-              javascript-fmt-on-save t
-              javascript-indent-level 2)
+              javascript-fmt-on-save t)
   (treemacs :variables
             treemacs-use-git-mode 'deferred)
   (html :variables
         web-fmt-tool 'prettier
         css-enable-lsp t
-        scss-enable-lsp t
-        web-mode-attr-indent-offset 2
-        web-mode-attr-value-indent-offset 2
-        web-mode-code-indent-offset 2
-        web-mode-css-indent-offset 2
-        web-mode-markup-indent-offset 2
-        web-mode-sql-indent-offset 2)
+        scss-enable-lsp t)
   (json :variables
         json-backend 'lsp
         json-fmt-tool 'prettier
