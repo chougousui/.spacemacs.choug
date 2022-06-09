@@ -65,8 +65,6 @@ dotspacemacs-configuration-layers
 
 dotspacemacs-additional-packages '(
                                    swiper
-                                   helm-rg
-                                   ivy-hydra
                                    )
 dotspacemacs-excluded-packages '(
                                  vi-tilde-fringe
