@@ -59,7 +59,6 @@ dotspacemacs-configuration-layers
   (plantuml :variables
             plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"
             org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
-  chinese
   choug
   )
 
@@ -69,18 +68,21 @@ dotspacemacs-additional-packages '(
 dotspacemacs-excluded-packages '(
                                  vi-tilde-fringe
                                  pangu-spacing
-                                 pyim
-                                 pyim-basedict
+                                 tide
                                  )
 dotspacemacs-default-font '("JetBrains Mono"
-                            :size 27        ;; 需要和下面的双字体配置对上
+                            :size 27
                             :weight normal
                             :width normal)
 
 (defun dotspacemacs/user-config ()
-  ;; 需要chinese layer
-  ;; 英文字体的size必须与dotspacemacs-default-font中的size完全一致,否则无法生效,10.0和10也是不同的.
-  (spacemacs//set-monospaced-font "JetBrains Mono" "华文楷体" 27 32)
+  ;; 不使用chinese layer独立设置字体,server模式下也有效
+  ;; (27,32)是个不错的搭配,小字号可能差4即可(16,20),再小的没试过
+  (spacemacs|do-after-display-system-init
+   (when (display-graphic-p)
+     (dolist (charset '(kana han cjk-misc bopomofo))
+       (set-fontset-font (frame-parameter nil 'font) charset
+                         (font-spec :family "华文楷体" :size 32)))))
   (with-eval-after-load 'git-gutter-fringe ;;need git-gutter as diff tools
     (set-face-background 'git-gutter-fr:added "#67b11d")
     (set-face-background 'git-gutter-fr:modified "#4f97d7")
