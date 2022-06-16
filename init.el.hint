@@ -59,6 +59,8 @@ dotspacemacs-configuration-layers
   (plantuml :variables
             plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"
             org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
+  (osx :variables
+          osx-swap-option-and-command t)
   choug
   )
 
