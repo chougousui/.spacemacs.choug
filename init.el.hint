@@ -69,6 +69,7 @@ dotspacemacs-additional-packages '(
                                    )
 dotspacemacs-excluded-packages '(
                                  vi-tilde-fringe
+                                 vim-empty-lines-mode
                                  pangu-spacing
                                  tide
                                  )
