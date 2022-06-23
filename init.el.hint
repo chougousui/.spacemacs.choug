@@ -15,9 +15,6 @@ dotspacemacs-configuration-layers
   (version-control :variables
                    version-control-diff-tool 'git-gutter
                    version-control-diff-side 'left)
-  (tabs :variables
-        tabs-auto-hide t
-        centaur-tabs-set-bar 'over)
   lsp
   (python :variables
              python-backend 'lsp
@@ -33,12 +30,7 @@ dotspacemacs-configuration-layers
          gofmt-args '("-m120")
          go-format-before-save t
          go-use-golangci-lint t)
-  (sql :variables
-          sql-backend 'lsp
-          sql-lsp-sqls-workspace-config-path 'root
-          sql-capitalize-keywords t
-          sql-capitalize-keywords-blacklist '("name" "user")
-          sql-auto-indent t)
+  rust
   (typescript :variables
                  typescript-backend 'lsp
                  typescript-fmt-tool 'prettier
@@ -46,8 +38,6 @@ dotspacemacs-configuration-layers
   (javascript :variables
               javascript-fmt-tool 'prettier
               javascript-fmt-on-save t)
-  (treemacs :variables
-            treemacs-use-git-mode 'deferred)
   (html :variables
         web-fmt-tool 'prettier
         css-enable-lsp t
@@ -56,9 +46,23 @@ dotspacemacs-configuration-layers
         json-backend 'lsp
         json-fmt-tool 'prettier
         json-fmt-on-save t)
+  yaml
+  csv
+  (sql :variables
+          sql-backend 'lsp
+          sql-lsp-sqls-workspace-config-path 'root
+          sql-capitalize-keywords t
+          sql-capitalize-keywords-blacklist '("name" "user")
+          sql-auto-indent t)
+  
   (plantuml :variables
             plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"
             org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
+  (tabs :variables
+        tabs-auto-hide t
+        centaur-tabs-set-bar 'over)
+  (treemacs :variables
+            treemacs-use-git-mode 'deferred)
   (osx :variables
           osx-swap-option-and-command t)
   choug
