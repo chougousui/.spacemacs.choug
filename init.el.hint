@@ -78,18 +78,19 @@ dotspacemacs-excluded-packages '(
                                  tide
                                  )
 dotspacemacs-default-font '("JetBrains Mono"
-                            :size 27
+                            :size 12.0
                             :weight normal
                             :width normal)
 
 (defun dotspacemacs/user-config ()
   ;; 不使用chinese layer独立设置字体,server模式下也有效
   ;; 已知搭配(27,32)(16,20)(15,18)
+  ;; 有小数点则可参与系统级别的缩放,建议搭配(10.0,12.0),(12.0,14.0)
   (spacemacs|do-after-display-system-init
    (when (display-graphic-p)
      (dolist (charset '(kana han cjk-misc bopomofo))
        (set-fontset-font (frame-parameter nil 'font) charset
-                         (font-spec :family "华文楷体" :size 32)))))
+                         (font-spec :family "STKaiti" :size 14.0)))))
   (with-eval-after-load 'git-gutter-fringe ;;need git-gutter as diff tools
     (set-face-background 'git-gutter-fr:added "#67b11d")
     (set-face-background 'git-gutter-fr:modified "#4f97d7")
