@@ -6,3 +6,5 @@
 (global-set-key (kbd "<C-backspace>") 'choug/backward-delete-word-or-region)
 (global-set-key (kbd "M-DEL") 'choug/backward-delete-word-or-region)
 (global-unset-key (kbd "C-t"))
+(global-set-key (kbd "C-}") 'centaur-tabs-forward)
+(global-set-key (kbd "C-{") 'centaur-tabs-backward)
