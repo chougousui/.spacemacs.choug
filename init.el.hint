@@ -34,14 +34,26 @@ dotspacemacs-configuration-layers
   (typescript :variables
                  typescript-backend 'lsp
                  typescript-fmt-tool 'prettier
-                 typescript-fmt-on-save t)
+                 typescript-fmt-on-save t
+                 typescript-indent-level 2
+                 )
   (javascript :variables
               javascript-fmt-tool 'prettier
-              javascript-fmt-on-save t)
+              javascript-fmt-on-save t
+              js-basic-offset 2
+              js-indent-level 2
+              )
   (html :variables
         web-fmt-tool 'prettier
         css-enable-lsp t
-        scss-enable-lsp t)
+        scss-enable-lsp t
+        web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2
+        ;; web-mode-script-padding 2
+        ;; web-mode-sql-indent-offset 2
+        ;; web-mode-attr-indent-offset 2
+        )
   (json :variables
         json-backend 'lsp
         json-fmt-tool 'prettier
@@ -101,6 +113,11 @@ dotspacemacs-default-font '("JetBrains Mono"
   (setq undo-tree-auto-save-history nil)
   (setq warning-suppress-types '((comp)))
   (setq fill-column 120)
+
+  ;; tsx mode本质是web-mode,但lsp在调整缩进时考虑的是web-mode
+  ;; 因此手动加上 tsx mode情况下的缩进
+  (with-eval-after-load 'lsp-mode
+    (add-to-list 'lsp--formatting-indent-alist '(typescript-tsx-mode . typescript-indent-level)))
 )
 ;;;;;;;;;;;;;; layers_+intl_chinese_config.el
 +    (if (display-graphic-p)
