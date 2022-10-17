@@ -120,6 +120,13 @@ dotspacemacs-default-font '("JetBrains Mono"
     (add-to-list 'lsp--formatting-indent-alist '(typescript-tsx-mode . typescript-indent-level))
     ;; jsx使用web-mode,也需要配置
     (add-to-list 'lsp--formatting-indent-alist '(web-mode . typescript-indent-level)))
+
+  ;; tsx-mode下需要自动补全单引号,jsx-mode下情况正常
+  (defvar tsx-electric-pairs '((?\' . ?\')) "electric pairs for tsx-mode.")
+  (defun tsx-add-electric-pairs ()
+    (setq-local electric-pair-pairs (append electric-pair-pairs tsx-electric-pairs))
+    (setq-local electric-pair-text-pairs electric-pair-pairs))
+  (add-hook 'typescript-tsx-mode-hook 'tsx-add-electric-pairs)
 )
 ;;;;;;;;;;;;;; layers_+intl_chinese_config.el
 +    (if (display-graphic-p)
