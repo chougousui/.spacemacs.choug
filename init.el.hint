@@ -110,6 +110,7 @@ dotspacemacs-default-font '("JetBrains Mono"
   (setq org-startup-indented t)
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'web-mode-hook 'prettier-js-mode)
+  (add-hook 'css-mode-hook 'prettier-js-mode)
   (setq undo-tree-auto-save-history nil)
   (setq warning-suppress-types '((comp)))
   (setq fill-column 120)
