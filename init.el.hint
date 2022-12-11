@@ -122,6 +122,13 @@ dotspacemacs-default-font '("JetBrains Mono"
     ;; jsx使用web-mode,也需要配置
     (add-to-list 'lsp--formatting-indent-alist '(web-mode . typescript-indent-level)))
 
+  ;; typescript-tsx-mode中,禁止在=后面自动添加"
+  ;; 否则写 onClick={() =>} 时,会出现 =">
+  ;; 写 disabled={'x' === 'y'}时会出现 ="="="
+  (with-eval-after-load 'typescript-tsx-mode
+    (setq web-mode-enable-auto-quoting nil)
+    (setq web-mode-auto-quote-style 3)) ;; 代码中定义 1: "", 2: '', 3: {} 但程序界面里面定义为0 1 2
+
   ;; tsx-mode下需要自动补全单引号,jsx-mode下情况正常
   (defvar tsx-electric-pairs '((?\' . ?\')) "electric pairs for tsx-mode.")
   (defun tsx-add-electric-pairs ()
