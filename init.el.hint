@@ -93,6 +93,20 @@ dotspacemacs-additional-packages '(
                                                           )
                                                )
                                    )
+dotspacemacs-frozen-packages '(
+                                  ;; 目前暂时不存在与melpa列表中,有的会检测到更新,然后卸载,安装时候装不上
+                                  evil-evilified-state
+                                  holy-mode
+                                  hybrid-mode
+                                  evil-unimpaired
+                                  info+
+                                  evil-escape
+                                  term-cursor
+                                  sql-indent
+                                  inspector
+                                  hide-comnt
+                                  help-fns+
+                                  )
 dotspacemacs-excluded-packages '(
                                  vi-tilde-fringe
                                  vim-empty-lines-mode
