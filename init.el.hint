@@ -1,10 +1,4 @@
-;; https://github.com/syl20bnr/spacemacs/issues/15144
-;; 为解决为use-package所定义的关键词spacediminish在定义前被使用
-(fmakunbound 'use-package)
-
 dotspacemacs-read-process-output-max (* 2048 1024)
-dotspacemacs-scratch-mode 'org-mode
-dotspacemacs-maximized-at-startup t
 dotspacemacs-line-numbers t
 dotspacemacs-folding-method 'origami
 
@@ -93,20 +87,6 @@ dotspacemacs-additional-packages '(
                                                           )
                                                )
                                    )
-dotspacemacs-frozen-packages '(
-                                  ;; 目前暂时不存在与melpa列表中,有的会检测到更新,然后卸载,安装时候装不上
-                                  evil-evilified-state
-                                  holy-mode
-                                  hybrid-mode
-                                  evil-unimpaired
-                                  info+
-                                  evil-escape
-                                  term-cursor
-                                  sql-indent
-                                  inspector
-                                  hide-comnt
-                                  help-fns+
-                                  )
 dotspacemacs-excluded-packages '(
                                  vi-tilde-fringe
                                  vim-empty-lines-mode
@@ -182,8 +162,4 @@ dotspacemacs-default-font '("JetBrains Mono"
   ;; (define-key evil-insert-state-map (kbd "C-<tab>") 'copilot-accept-completion-by-word)
   ;; (define-key evil-insert-state-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
 )
-;;;;;;;;;;;;;; layers_+intl_chinese_config.el
-+    (if (display-graphic-p)
-         (set-fontset-font (frame-parameter nil 'font) charset
-                           (font-spec :family chinese :size chinese-size))))
-+    )
+
