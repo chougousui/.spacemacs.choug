@@ -163,3 +163,29 @@ dotspacemacs-default-font '("JetBrains Mono"
   ;; (define-key evil-insert-state-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
 )
 
+;;;;;;;;;;;;;;;;;; ~/.emacs.d/init.el
+;; ignore all the evil* holy* hybrid* packages
+(define-advice configuration-layer//add-package (:around (orig pkg &optional usedp))
+  "filter out the evil* holy* packages."
+  (let ((name (format "%s" (oref pkg :name))))
+    (unless (seq-some (lambda (x) (string-prefix-p x name)) '("evil" "holy" "hybrid"))
+      (funcall orig pkg usedp))))
+;; use the default face
+(define-advice spacemacs//evil-state-face (:around (fn))
+  (spaceline-highlight-face-default))
+;; mock the essential variables, functions and macros
+(defvar evil-insert-state-map (make-sparse-keymap))
+(defvar evil-motion-state-map (make-sparse-keymap))
+(defvar evil-normal-state-map (make-sparse-keymap))
+(defvar evil-intercept-maps '())
+(defalias 'evil-avy-goto-char-timer 'avy-goto-char-timer)
+(defmacro evil-define-key (state keymap key def &rest bindings))
+(defmacro evilified-state-evilify-map (map &rest props))
+(defun evil-global-set-key (state key def))
+(defun evil-end-undo-step ())
+(defun evil-evilified-state ())
+(defun evil-ex-define-cmd (cmd function))
+(defun evil-normalize-keymaps (&optional state))
+(defun evil-start-undo-step ())
+(defun evil-set-custom-state-maps (var pending-var key _make newlist))
+(defun evil-set-initial-state (mode state))
