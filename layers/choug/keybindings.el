@@ -8,3 +8,4 @@
 (global-unset-key (kbd "C-t"))
 (global-set-key (kbd "C-}") 'centaur-tabs-forward)
 (global-set-key (kbd "C-{") 'centaur-tabs-backward)
+(global-set-key (kbd "M-m i e") 'tiny-expand)

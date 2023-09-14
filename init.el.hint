@@ -80,6 +80,7 @@ dotspacemacs-configuration-layers
 
 dotspacemacs-additional-packages '(
                                    swiper
+                                   tiny
                                    (copilot :location (recipe
                                                           :fetcher github
                                                           :repo "zerolfx/copilot.el"
