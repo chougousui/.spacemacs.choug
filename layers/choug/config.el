@@ -36,6 +36,7 @@ Options are `left' and `right'.")
 (setq undo-tree-auto-save-history nil)
 (setq warning-suppress-types '((comp)))
 (setq fill-column 120)
+(setq sql-port 3307)
 
 (add-hook 'js2-mode-hook 'prettier-js-mode)
 (add-hook 'web-mode-hook 'prettier-js-mode)
