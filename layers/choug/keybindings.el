@@ -9,4 +9,12 @@
 (global-set-key (kbd "C-}") 'centaur-tabs-forward)
 (global-set-key (kbd "C-{") 'centaur-tabs-backward)
 (global-set-key (kbd "M-m i e") 'tiny-expand)
-(global-set-key (kbd "M-m x a c") 'choug/align-comment-dwim)
+
+;; 发现M-m y还没有被占用,刚才拿来
+;; 以下内容使用预设的leader key M-m,并可以为key添加注释性文字(默认+prefix)
+(spacemacs|spacebind
+ :global
+ (("y" "choug"
+   ;; 等效于(global-set-key (kbd "M-m y a") 'choug/align-comment-dwim)
+   ("a" choug/align-comment-dwim "align commentn")
+   ("m" choug/minify "minify"))))
