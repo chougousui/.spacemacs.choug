@@ -56,3 +56,21 @@ With argument ARG, do this that many times."
   ;; (不知为什么source.organizeImports没有按ts-ls的官方说明一样先去除不使用的内容)
   (lsp-make-interactive-code-actions organize-imports "source.removeUnusedImports" "source.organizeImports")
   )
+
+(defun choug/align-comment-dwim ()
+  "对齐一个区域内的注释,
+   若已经指定区域,则直接调用,
+   否则将光标所在括号范围作为区域"
+  (interactive)
+  ;; 获取注释符号用comment-start,可能为nil
+  ;; let声明多个变量时不能有依赖关系,但let*可以
+  (let* ((comment-start-char (or comment-start "//"))
+        (align-pattern (concat "\\(\\s-*\\)" comment-start-char)))
+    (if (region-active-p)
+        (align-regexp (region-beginning) (region-end) align-pattern)
+      (save-excursion
+        (backward-up-list)
+        (let ((start (point)))
+          (forward-list)
+          (align-regexp start (point) align-pattern))))))
+
