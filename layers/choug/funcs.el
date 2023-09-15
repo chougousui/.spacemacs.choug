@@ -36,6 +36,23 @@ With argument ARG, do this that many times."
 
 ;; 自定义一个lsp相关函数,让lsp能移除未使用的imports
 ;; 但在启动lsp-mode之后才开始定义,否则函数找不到
-;; (add-hook 'lsp-mode-hook '(lambda () (lsp-make-interactive-code-action remove-unused-imports "source.removeUnusedImports")))
 (with-eval-after-load 'lsp-mode
-  (lsp-make-interactive-code-action remove-unused-imports "source.removeUnusedImports"))
+  (defmacro lsp-make-interactive-code-actions (func-name &rest code-action-kinds)
+    "重新定义一个可以绑定多个action到一个命令的宏"
+    `(defun ,(intern (concat "lsp-" (symbol-name func-name))) ()
+       ,(format "Perform multiple code actions: %s" (mapconcat 'identity code-action-kinds ", "))
+       (interactive)
+       (let ((lsp-auto-execute-action t))
+         (dolist (action-kind (quote ,code-action-kinds))
+           (condition-case nil
+               (lsp-execute-code-action-by-kind action-kind)
+             (lsp-no-code-actions
+              (when (called-interactively-p 'any)
+                (lsp--info (format "%s action not available" action-kind)))))))))
+
+  ;; 定义一个用于移除未使用的imports的命令
+  (lsp-make-interactive-code-action remove-unused-imports "source.removeUnusedImports")
+  ;; 覆盖lsp-mode的默认定义,现在lsp-organize-imports会先去除不使用的内容,然后再排序
+  ;; (不知为什么source.organizeImports没有按ts-ls的官方说明一样先去除不使用的内容)
+  (lsp-make-interactive-code-actions organize-imports "source.removeUnusedImports" "source.organizeImports")
+  )
