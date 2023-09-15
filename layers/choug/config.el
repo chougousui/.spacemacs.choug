@@ -71,3 +71,14 @@ Options are `left' and `right'.")
   (setq-local electric-pair-pairs (append electric-pair-pairs tsx-electric-pairs))
   (setq-local electric-pair-text-pairs electric-pair-pairs))
 (add-hook 'typescript-tsx-mode-hook 'tsx-add-electric-pairs)
+
+(defvar ts-organize-imports-on-save t
+  "控制是否在保存ts文件前执行lsp-organize-imports")
+
+(add-hook 'before-save-hook
+  (lambda ()
+    "在保存文件前,判断符合条件的话,就执行lsp-organize-imports"
+    (when (and ts-organize-imports-on-save
+               (eq major-mode 'typescript-mode)
+               lsp-mode)
+      (lsp-organize-imports))))
