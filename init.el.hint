@@ -1,4 +1,5 @@
 dotspacemacs-read-process-output-max (* 2048 1024)
+dotspacemacs-maximized-at-startup t
 dotspacemacs-line-numbers t
 dotspacemacs-folding-method 'origami
 
@@ -16,10 +17,11 @@ dotspacemacs-configuration-layers
   lsp
   (python :variables
              python-backend 'lsp
+             python-lsp-server 'pyright
              python-formatter 'black
              python-format-on-save t
              python-sort-imports-on-save t
-             python-fill-column 119)
+             python-fill-column 120)
   (go :variables
          go-tab-width 4
          go-backend 'lsp             ;; need isntall gopls
@@ -28,7 +30,12 @@ dotspacemacs-configuration-layers
          gofmt-args '("-m120")
          go-format-before-save t
          go-use-golangci-lint t)
-  rust
+  (rust :variables
+           rustic-format-on-save t
+           cargo-process-reload-on-modify t)
+  (php :variables
+          php-backend 'lsp
+          tab-width 2)
   (typescript :variables
                  typescript-backend 'lsp
                  typescript-fmt-tool 'prettier
@@ -56,6 +63,10 @@ dotspacemacs-configuration-layers
         json-backend 'lsp
         json-fmt-tool 'prettier
         json-fmt-on-save t)
+  (lua :variables
+          lua-backend 'lsp
+          lua-lsp-server 'lua-language-server)
+  protobuf
   yaml
   csv
   (sql :variables
@@ -63,8 +74,11 @@ dotspacemacs-configuration-layers
           sql-lsp-sqls-workspace-config-path 'root
           sql-capitalize-keywords t
           sql-capitalize-keywords-blacklist '("name" "user")
-          sql-auto-indent t)
-  
+          sql-auto-indent t
+          )
+  nginx
+  (docker :variables
+             docker-dockerfile-backend 'lsp)
   (plantuml :variables
             plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"
             org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
@@ -89,11 +103,26 @@ dotspacemacs-additional-packages '(
                                                )
                                    )
 dotspacemacs-excluded-packages '(
-                                 vi-tilde-fringe
-                                 vim-empty-lines-mode
-                                 pangu-spacing
-                                 tide
-                                 )
+                                    vi-tilde-fringe
+                                    vim-empty-lines-mode
+                                    pangu-spacing
+                                    pyim
+                                    pyim-basedict
+                                    tide
+
+                                    hybrid-mode
+                                    evil-unimpaired
+                                    info+
+                                    evil-escape
+                                    term-cursor
+                                    sql-indent
+                                    inspector
+                                    hide-comnt
+                                    help-fns+
+
+                                    php-auto-yasnippets
+                                    phpcbf
+                                    )
 dotspacemacs-default-font '("JetBrains Mono"
                             :size 12.0
                             :weight normal
@@ -107,43 +136,10 @@ dotspacemacs-default-font '("JetBrains Mono"
    (when (display-graphic-p)
      (dolist (charset '(kana han cjk-misc bopomofo))
        (set-fontset-font (frame-parameter nil 'font) charset
-                         (font-spec :family "STKaiti" :size 14.0)))))
-  (with-eval-after-load 'git-gutter-fringe ;;need git-gutter as diff tools
-    (set-face-background 'git-gutter-fr:added "#67b11d")
-    (set-face-background 'git-gutter-fr:modified "#4f97d7")
-    (set-face-background 'git-gutter-fr:deleted "#f2241f"))
-  (setq org-startup-indented t)
-  (add-hook 'js2-mode-hook 'prettier-js-mode)
-  (add-hook 'web-mode-hook 'prettier-js-mode)
-  (add-hook 'css-mode-hook 'prettier-js-mode)
-  (setq undo-tree-auto-save-history nil)
-  (setq warning-suppress-types '((comp)))
-  (setq fill-column 120)
-
-  ;; tsx mode本质是web-mode,但lsp在调整缩进时考虑的是web-mode
-  ;; 因此手动加上 tsx mode情况下的缩进
-  (with-eval-after-load 'lsp-mode
-    (add-to-list 'lsp--formatting-indent-alist '(typescript-tsx-mode . typescript-indent-level))
-    ;; jsx使用web-mode,也需要配置
-    (add-to-list 'lsp--formatting-indent-alist '(web-mode . typescript-indent-level)))
-
-  ;; typescript-tsx-mode中,禁止在=后面自动添加"
-  ;; 否则写 onClick={() =>} 时,会出现 =">
-  ;; 写 disabled={'x' === 'y'}时会出现 ="="=", angular只会在括号嵌套层次较深时出现这个问题,但react总是出现
-  ;; with-eval-after-load只设置一次,不理想,希望每次进入该模式都设置,使用hook
-  (defun tsx-stop-auto-closeing ()
-    ;; setq会影响其他buffer中基于web-mode的major mode,比如angular的html文件,因此使用setq-local
-    (setq-local web-mode-auto-quote-style 3);; 代码中定义 1: "", 2: '', 3: {} 但程序界面里面定义为0 1 2
-    (setq-local web-mode-enable-auto-quoting nil);; 代码中定义 1: "", 2: '', 3: {} 但程序界面里面定义为0 1 2
-  )
-  (add-hook 'typescript-tsx-mode-hook 'tsx-stop-auto-closeing)
-
-  ;; tsx-mode下需要自动补全单引号,jsx-mode下情况正常
-  (defvar tsx-electric-pairs '((?\' . ?\')) "electric pairs for tsx-mode.")
-  (defun tsx-add-electric-pairs ()
-    (setq-local electric-pair-pairs (append electric-pair-pairs tsx-electric-pairs))
-    (setq-local electric-pair-text-pairs electric-pair-pairs))
-  (add-hook 'typescript-tsx-mode-hook 'tsx-add-electric-pairs)
+                         ;; (font-spec :family "STKaiti" :size 14)  ;; 或华文楷体,然而其不是等宽字体,尤其在pgtk下显示异常
+                         ;; (font-spec :family "AR PL UKai CN" :size 14.5)
+                         (font-spec :family "KaiTi" :size 14.5)
+                         ))))
 
   ;; copilot配置
   ;; (with-eval-after-load 'company

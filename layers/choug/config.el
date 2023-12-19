@@ -23,10 +23,6 @@ Options are `left' and `right'.")
 ;; 默认使用光标下的字符串作为helm-projectile-ag的搜索对象
 (setq helm-ag-insert-at-point 'symbol)
 
-;; (set-face-background 'git-gutter-fr:added "green")
-;; (set-face-background 'git-gutter-fr:modified "yellow")
-;; (set-face-background 'git-gutter-fr:deleted "red")
-
 (with-eval-after-load 'git-gutter-fringe ;;need git-gutter as diff tools
   (set-face-background 'git-gutter-fr:added "#67b11d")
   (set-face-background 'git-gutter-fr:modified "#4f97d7")
@@ -85,3 +81,12 @@ Options are `left' and `right'.")
       (lsp-organize-imports))))
 
 (add-hook 'find-file-hook 'choug/open-file-in-readonly-mode)
+
+;; lua-mode似乎没有集成格式化工具,因此只能自行使用after-save-hook实现一个
+(defun my-lua-mode-after-save-hook ()
+  (when (eq major-mode 'lua-mode)
+    (message "will format file by stylua")
+    (shell-command (concatenate 'string "stylua " buffer-file-name))
+    )
+  )
+(add-hook 'after-save-hook 'my-lua-mode-after-save-hook)
