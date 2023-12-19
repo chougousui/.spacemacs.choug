@@ -1,5 +1,5 @@
 (add-hook 'after-init-hook 'global-company-mode)
-;; (add-hook 'php-mode-hook '(lambda () (setq c-basic-offset 2)))
+(add-hook 'php-mode-hook '(lambda () (setq c-basic-offset 2)))
 ;; (global-git-gutter-mode t)
 ;; (global-superword-mode 1)
 (electric-pair-mode t)
