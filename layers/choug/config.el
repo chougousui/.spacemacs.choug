@@ -83,3 +83,5 @@ Options are `left' and `right'.")
                (eq major-mode 'typescript-mode)
                lsp-mode)
       (lsp-organize-imports))))
+
+(add-hook 'find-file-hook 'choug/open-file-in-readonly-mode)
