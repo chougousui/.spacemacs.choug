@@ -80,3 +80,8 @@ With argument ARG, do this that many times."
     (when (string-match-p "readonly" buffer-file-name)
       (setq buffer-read-only t)
       (message "File opened in readonly mode."))))
+
+(defun choug/open-temp-note ()
+  "打开 ~/prog/temp/temp.org文件"
+  (interactive)
+  (find-file "~/prog/temp/temp.org"))
