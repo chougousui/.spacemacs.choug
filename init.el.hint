@@ -186,3 +186,4 @@ dotspacemacs-default-font '("JetBrains Mono"
 (defun evil-start-undo-step ())
 (defun evil-set-custom-state-maps (var pending-var key _make newlist))
 (defun evil-set-initial-state (mode state))
+(defun evil-add-command-properties (&rest args))
