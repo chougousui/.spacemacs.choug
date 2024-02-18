@@ -74,13 +74,6 @@ With argument ARG, do this that many times."
           (forward-list)
           (align-regexp start (point) align-pattern))))))
 
-(defun choug/open-file-in-readonly-mode ()
-  "Open file in readonly mode if the path contains 'readonly'."
-  (when buffer-file-name
-    (when (string-match-p "readonly" buffer-file-name)
-      (setq buffer-read-only t)
-      (message "File opened in readonly mode."))))
-
 (defun choug/open-temp-note ()
   "打开 ~/prog/temp/temp.org文件"
   (interactive)
