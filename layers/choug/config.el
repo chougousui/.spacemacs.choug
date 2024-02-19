@@ -113,3 +113,7 @@
                                    lsp-mode)
                           (lsp-format-buffer))
                         ))))
+(add-hook 'python-mode-hook
+          (lambda ()
+            (when (eq python-formatter 'ruff)
+              (ruff-format-on-save-mode t))))

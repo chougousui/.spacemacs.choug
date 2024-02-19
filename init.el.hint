@@ -21,9 +21,9 @@ dotspacemacs-configuration-layers
   (python :variables
              python-backend 'lsp
              python-lsp-server 'pyright
-             ;; 针对项目,可以使用lsp,针对单个文件,需要使用black
-             ;; 目前python layer不支持直接以ruff作为格式化工具
-             python-formatter 'lsp
+             ;; 通过自定义方式让emacs支持了使用ruff formmat作为python格式化工具
+             ;; 好在spacemacs不完全要求值在列表内
+             python-formatter 'ruff
              python-format-on-save t   ;; 对lsp formatter无效,需额外手动使用hook实现
              python-sort-imports-on-save t
              python-fill-column 120)
@@ -107,6 +107,9 @@ dotspacemacs-additional-packages '(
                                                           )
                                                )
                                    )
+                                   docstr
+                                   auto-yasnippet
+                                   ruff-format
 dotspacemacs-excluded-packages '(
                                     vi-tilde-fringe
                                     vim-empty-lines-mode
