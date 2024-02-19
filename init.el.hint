@@ -14,12 +14,17 @@ dotspacemacs-configuration-layers
   (version-control :variables
                    version-control-diff-tool 'git-gutter
                    version-control-diff-side 'left)
-  lsp
+  (lsp :variables
+          lsp-file-watch-threshold 1500
+          lsp-enable-on-type-formatting t
+          lsp-before-save-edits t)
   (python :variables
              python-backend 'lsp
              python-lsp-server 'pyright
-             python-formatter 'black
-             python-format-on-save t
+             ;; 针对项目,可以使用lsp,针对单个文件,需要使用black
+             ;; 目前python layer不支持直接以ruff作为格式化工具
+             python-formatter 'lsp
+             python-format-on-save t   ;; 对lsp formatter无效,需额外手动使用hook实现
              python-sort-imports-on-save t
              python-fill-column 120)
   (go :variables

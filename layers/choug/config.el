@@ -67,13 +67,15 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 在保存文件前,判断符合条件的话,就执行lsp-organize-imports
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-hook 'before-save-hook
+(add-hook 'typescript-mode-hook
           (lambda ()
-            (when (and t       ;; 根据需求换成nil,控制整体功能的开关
-                       (eq major-mode 'typescript-mode)
-                       lsp-mode)
-              (lsp-organize-imports))
-            ))
+            (add-hook 'before-save-hook
+                      (lambda ()
+                        (when (and t       ;; 根据需求换成nil,控制整体功能的开关
+                                   (eq major-mode 'typescript-mode)
+                                   lsp-mode)
+                          (lsp-organize-imports))
+                        ))))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 文件路径包含readonly,则以readonly模式打开文件
@@ -97,3 +99,17 @@
               (shell-command (concatenate 'string "stylua " buffer-file-name))
               )
             ))
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; python使用了lsp formatter后,目前只能手动添加格式化hook
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 不知道为什么with-eval-after-load不好用
+(add-hook 'python-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook
+                      (lambda ()
+                        (when (and (eq python-formatter 'lsp)
+                                   (eq major-mode 'python-mode)
+                                   lsp-mode)
+                          (lsp-format-buffer))
+                        ))))
