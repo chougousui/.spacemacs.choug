@@ -78,3 +78,11 @@ With argument ARG, do this that many times."
   "打开 ~/prog/temp/temp.org文件"
   (interactive)
   (find-file "~/prog/temp/temp.org"))
+
+(defun choug/consult-ripgrep-dwim ()
+  "Search with `consult-ripgrep` using the selected text or the word at the point."
+  (interactive)
+  (let ((search-term (if (use-region-p)
+                         (buffer-substring-no-properties (region-beginning) (region-end))
+                       (thing-at-point 'word t))))
+    (consult-ripgrep nil search-term)))

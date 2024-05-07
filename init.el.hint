@@ -8,6 +8,8 @@ dotspacemacs-configuration-layers
   (auto-completion :variables
                       auto-completion-minimum-prefix-length 2
                       auto-completion-idle-delay 0.0)
+  (compleseus :variables
+                 compleseus-engine 'vertico) ;; 不再使用helm
   (git :variables               ;; 需要安装delta
           git-enable-magit-delta-plugin t
           git-enable-magit-gitflow-plugin t)
