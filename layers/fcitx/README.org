@@ -1,0 +1,30 @@
+#+TITLE: fcitx layer
+# Document tags are separated with "|" char
+# The example below contains 2 tags: "layer" and "web service"
+# Avaliable tags are listed in <spacemacs_root>/.ci/spacedoc-cfg.edn
+# under ":spacetools.spacedoc.config/valid-tags" section.
+#+TAGS: layer|web service
+
+# The maximum height of the logo should be 200 pixels.
+[[img/fcitx.png]]
+
+# TOC links should be GitHub style anchors.
+* Table of Contents                                        :TOC_4_gh:noexport:
+- [[#description][Description]]
+  - [[#features][Features:]]
+- [[#install][Install]]
+- [[#key-bindings][Key bindings]]
+
+* Description
+一个单纯使用fcitx.el包的layer,帮助用户智能地,及时地切换输入法
+
+** Features:
+  - 智能切到英语状态,智能切回
+
+* Install
+To use this configuration layer, add it to your =~/.spacemacs=. You will need to
+add =fcitx= to the existing =dotspacemacs-configuration-layers= list in this
+file.
+
+* Key bindings
+暂无

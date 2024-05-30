@@ -99,6 +99,12 @@ dotspacemacs-configuration-layers
   choug
   (chinese :variables
            pyim-default-scheme 'flypy-workman)
+  ;; (chinese :variables                             ;; 如果要基于chinese layer使用fcitx.el则如此配置,但一般不用
+  ;;          chinese-enable-fcitx t                 ;; 如果只为使用fcitx,则还要删除pyim,pyim-basedict等包
+  ;;          chinese-use-fcitx5 t
+  ;;          chinese-fcitx-use-dbus t
+  ;;          fcitx-use-dbus 'fcitx5)
+  fcitx
   )
 
 dotspacemacs-additional-packages '(
