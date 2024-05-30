@@ -97,6 +97,8 @@ dotspacemacs-configuration-layers
   (osx :variables
           osx-swap-option-and-command t)
   choug
+  (chinese :variables
+           pyim-default-scheme 'flypy-workman)
   )
 
 dotspacemacs-additional-packages '(
@@ -116,8 +118,6 @@ dotspacemacs-excluded-packages '(
                                     vi-tilde-fringe
                                     vim-empty-lines-mode
                                     pangu-spacing
-                                    pyim
-                                    pyim-basedict
                                     tide
 
                                     hybrid-mode
