@@ -164,7 +164,6 @@
     ("ah" "ang")
     ("ee" "e")
     ("er" "er")
-    ("eg" "eng")
     ("ag" "ng")
     ("ao" "o")
     ("au" "ou"))))
