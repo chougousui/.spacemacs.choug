@@ -138,6 +138,10 @@ dotspacemacs-excluded-packages '(
 
                                     php-auto-yasnippets
                                     phpcbf
+
+                                    popwin
+                                    window-purpose
+                                    eyebrowse
                                     )
 dotspacemacs-default-font '("JetBrains Mono"
                             :size 12.0
