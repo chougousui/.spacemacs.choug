@@ -11,6 +11,7 @@
 (global-set-key (kbd "M-m i e") 'tiny-expand)
 (global-set-key (kbd "M-m b t") 'choug/open-temp-note)
 (global-set-key (kbd "M-s f") 'consult-fd)
+(global-set-key (kbd "M-m f y y") 'spacemacs/projectile-copy-file-path)
 
 ;; 发现M-m y还没有被占用,刚才拿来
 ;; 以下内容使用预设的leader key M-m,并可以为key添加注释性文字(默认+prefix)

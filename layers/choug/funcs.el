@@ -86,3 +86,29 @@ With argument ARG, do this that many times."
                          (buffer-substring-no-properties (region-beginning) (region-end))
                        (thing-at-point 'word t))))
     (consult-ripgrep nil search-term)))
+
+;; 官方api名字难以理解,一个简单的parent函数,都如此费劲
+;; 故自定义以覆盖难读函数名
+(defun parent-directory (dir)
+  "获取dir的父级目录
+
+  file-name-directory /a/b/ 得到的还是 /a/b/
+  file-name-directory /a/b  得到的才是 /a/
+  directory-file-name /a/b/ 或 /a/b 得到 /a/b"
+  (file-name-directory (directory-file-name dir)))
+
+;; 覆盖默认projectile定义中获取相对路径只相对到项目根目录的定义
+;; 直接相对到项目父目录
+;; 同时不在项目里的,也要能继续工作
+(defun spacemacs--projectile-file-path ()
+  "智能获取文件路径
+
+  返回:
+    - 不是文件: nil
+    - 不在项目中: 完整路径
+    - 在项目中: 相对于项目根目录的父目录的路径"
+  (when-let* ((file-name (buffer-file-name))
+              (true-file-name (file-truename file-name)))
+    (if-let ((project-root (projectile-project-root)))
+        (file-relative-name true-file-name (parent-directory project-root))
+      true-file-name)))
