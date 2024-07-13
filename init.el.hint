@@ -88,7 +88,8 @@ dotspacemacs-configuration-layers
              docker-dockerfile-backend 'lsp)
   (plantuml :variables
             plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"
-            org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
+            org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"
+            plantuml-indent-level 4)
   (tabs :variables
         tabs-auto-hide t
         centaur-tabs-set-bar 'over)
