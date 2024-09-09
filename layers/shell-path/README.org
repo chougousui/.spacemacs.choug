@@ -1,0 +1,28 @@
+#+TITLE: shell-path layer
+# Document tags are separated with "|" char
+# The example below contains 2 tags: "layer" and "web service"
+# Avaliable tags are listed in <spacemacs_root>/.ci/spacedoc-cfg.edn
+# under ":spacetools.spacedoc.config/valid-tags" section.
+#+TAGS: layer|shell|path
+
+# TOC links should be GitHub style anchors.
+* Table of Contents                                        :TOC_4_gh:noexport:
+- [[#description][Description]]
+  - [[#features][Features:]]
+- [[#install][Install]]
+- [[#key-bindings][Key bindings]]
+
+* Description
+借助 =exec-path-from-shell= 获取PATH信息而不是使用 =~/.spacemacs.d/.spacemacs.env=.
+当环境变量频繁变化时(尤其是fnm等版本管理工具总是生成临时的PATH),非常有效
+
+** Features:
+  - 以GUI方式启动emacs时从shell中读取环境变量
+
+* Install
+编辑dotspacemacs文件,
+- 注释掉 =dotspacemacs/user-env= 列表中的 =(spacemacs/load-spacemacs-env)=
+- 在 =dotspacemacs-configuration-layers= 列表中添加 =shell-path=
+
+* Key bindings
+暂无
