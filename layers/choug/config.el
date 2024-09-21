@@ -30,6 +30,8 @@
   (set-face-background 'git-gutter-fr:modified "#4f97d7")
   (set-face-background 'git-gutter-fr:deleted "#f2241f"))
 
+(add-to-list 'auto-mode-alist '("\\.jsonc\\'" . jsonc-mode))
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; tsx模式bug颇多
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
