@@ -92,29 +92,20 @@
             ))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; lua-mode似乎没有集成格式化工具,因此只能自行使用after-save-hook实现一个
+;; 一些小众语言出于各种原因没有集成格式化工具.
+;; 自行使用reformatter.el实现一些(需要在formatter-socket layer的初始化之后)
+;; lua-layer没有为lua-mode集成格式化工具
+;; rust-layer没有为toml-mode集成格式化工具
+;; yaml=layer没有为yaml-mode集成格式化工具
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-hook 'after-save-hook
-          (lambda ()
-            (when (eq major-mode 'lua-mode)
-              (message "will format file by stylua")
-              (shell-command (concatenate 'string "stylua " buffer-file-name))
-              )
-            ))
+(add-hook 'lua-mode-hook #'lua-format-on-save-mode)
+(add-hook 'toml-mode-hook #'dprint-format-on-save-mode)
+(add-hook 'yaml-mode-hook #'dprint-format-on-save-mode)
+(add-hook 'shell-script-mode #'shell-format-on-save-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; python使用了lsp formatter后,目前只能手动添加格式化hook
+;; python改用性能更好的ruff formatter
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 不知道为什么with-eval-after-load不好用
-(add-hook 'python-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook
-                      (lambda ()
-                        (when (and (eq python-formatter 'lsp)
-                                   (eq major-mode 'python-mode)
-                                   lsp-mode)
-                          (lsp-format-buffer))
-                        ))))
 (add-hook 'python-mode-hook
           (lambda ()
             (when (eq python-formatter 'ruff)
