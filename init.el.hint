@@ -5,9 +5,11 @@ dotspacemacs-folding-method 'origami
 
 dotspacemacs-configuration-layers
 '(
+  shell-path
+  formatter-socket
   (auto-completion :variables
                       auto-completion-minimum-prefix-length 2
-                      auto-completion-idle-delay 0.0)
+                      auto-completion-idle-delay 0.05)
   (compleseus :variables
                  compleseus-engine 'vertico) ;; 不再使用helm
   (git :variables               ;; 需要安装delta
@@ -28,6 +30,7 @@ dotspacemacs-configuration-layers
              python-formatter 'ruff
              python-format-on-save t   ;; 对lsp formatter无效,需额外手动使用hook实现
              python-sort-imports-on-save t
+             lsp-enable-on-type-formatting t ;; 目前的ruff-lsp忽略了这个变量
              python-fill-column 120)
   (go :variables
          go-tab-width 4
@@ -42,7 +45,20 @@ dotspacemacs-configuration-layers
            cargo-process-reload-on-modify t)
   (php :variables
           php-backend 'lsp
+          c-basic-offset 2
           tab-width 2)
+  (csharp :variables
+             csharp-backend 'omnisharp
+             )
+  (dart :variables
+           dart-backend 'lsp
+           lsp-dart-sdk-dir "$HOME/fvm/versions/3.24.0/bin/cache/dart-sdk/"
+           lsp-enable-on-type-formatting t
+           dart-server-format-on-save t)
+  (kotlin :variables
+             kotlin-backend 'lsp
+             lsp-clients-kotlin-server-executable "/usr/bin/kotlin-language-server"
+             )
   (typescript :variables
                  typescript-backend 'lsp
                  typescript-fmt-tool 'prettier
@@ -97,7 +113,7 @@ dotspacemacs-configuration-layers
             treemacs-use-git-mode 'deferred)
   (osx :variables
           osx-swap-option-and-command t)
-  shell-path
+  codeium
   choug
   ;; (chinese :variables                             ;; 如果要基于chinese layer使用fcitx.el则如此配置,但一般不用
   ;;          chinese-enable-fcitx t                 ;; 如果只为使用fcitx,则还要删除pyim,pyim-basedict等包
