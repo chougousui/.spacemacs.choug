@@ -110,3 +110,7 @@
           (lambda ()
             (when (eq python-formatter 'ruff)
               (ruff-format-on-save-mode t))))
+
+
+;; conf-mode下自动显示行号
+(add-hook 'conf-mode-hook #'display-line-numbers-mode)
