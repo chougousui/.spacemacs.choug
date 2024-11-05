@@ -31,6 +31,7 @@ dotspacemacs-configuration-layers
              python-format-on-save t   ;; 对lsp formatter无效,需额外手动使用hook实现
              python-sort-imports-on-save t
              lsp-enable-on-type-formatting t ;; 目前的ruff-lsp忽略了这个变量
+             lsp-ruff-server-command '("ruff" "server" "--preview")
              python-fill-column 120)
   (go :variables
          go-tab-width 4
@@ -81,6 +82,8 @@ dotspacemacs-configuration-layers
         ;; web-mode-script-padding 2
         web-mode-sql-indent-offset 2
         web-mode-attr-indent-offset 2
+        web-mode-enable-auto-closing t
+        web-mode-auto-close-style 2
         )
   (json :variables
         json-backend 'lsp
@@ -130,20 +133,22 @@ dotspacemacs-configuration-layers
 dotspacemacs-additional-packages '(
                                    swiper
                                    tiny
-                                   (copilot :location (recipe
-                                                          :fetcher github
-                                                          :repo "zerolfx/copilot.el"
-                                                          :files ("*.el" "dist")
-                                                          )
-                                               )
-                                   )
                                    docstr
                                    auto-yasnippet
-                                   ruff-format
+                                   python-docstring
+                                   )
+
 dotspacemacs-excluded-packages '(
                                     vi-tilde-fringe
                                     vim-empty-lines-mode
+
+                                    pyim-wbdict
+                                    find-by-pinyin-dired
+                                    ace-pinyin
                                     pangu-spacing
+                                    youdao-dictionary
+                                    chinese-conv
+
                                     tide
 
                                     hybrid-mode
@@ -162,6 +167,13 @@ dotspacemacs-excluded-packages '(
                                     popwin
                                     window-purpose
                                     eyebrowse
+
+                                    ;; csharp layer引入的部分包
+                                    csharp-mode ;; emacs 31中成为内置mode
+
+                                    ;; html layer引入的部分包
+                                    scss-mode ;; emacs 31中成为内置css-mode的派生mode
+                                    web-beautify ;; 并不使用该mode来格式化
                                     )
 dotspacemacs-default-font '("JetBrains Mono"
                             :size 12.0
