@@ -192,24 +192,6 @@ dotspacemacs-default-font '("JetBrains Mono"
                          ;; (font-spec :family "AR PL UKai CN" :size 14.5)
                          (font-spec :family "KaiTi" :size 14.5)
                          ))))
-
-  ;; copilot配置
-  ;; (with-eval-after-load 'company
-  ;;   ;; 禁用inline preview?
-  ;;   (delq 'company-preview-if-just-one-frontend company-frontends))
-  ;; 当major-mode为prog-mode派生且不是dotenv-mode时,启用copilot
-  ;; (add-hook 'prog-mode-hook
-  ;;           (lambda ()
-  ;;             (unless (derived-mode-p 'dotenv-mode)
-  ;;               (copilot-mode 1)
-  ;;               )))
-  ;; (with-eval-after-load 'copilot
-  ;;   (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-  ;;   (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
-  ;;   (setq copilot-enable-predicates nil)
-  ;;   )
-  ;; (define-key evil-insert-state-map (kbd "C-<tab>") 'copilot-accept-completion-by-word)
-  ;; (define-key evil-insert-state-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
 )
 
 ;;;;;;;;;;;;;;;;;; ~/.emacs.d/init.el
