@@ -22,6 +22,10 @@ dotspacemacs-configuration-layers
           lsp-file-watch-threshold 1500
           lsp-enable-on-type-formatting t
           lsp-before-save-edits t)
+  (org :variables
+       org-enable-modern-support t
+       org-display-remote-inline-images 'cache')
+  (org-ext :enabled-for org)
   (python :variables
              python-backend 'lsp
              python-lsp-server 'pyright
