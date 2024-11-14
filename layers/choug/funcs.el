@@ -65,7 +65,7 @@ With argument ARG, do this that many times."
   ;; 获取注释符号用comment-start,可能为nil
   ;; let声明多个变量时不能有依赖关系,但let*可以
   (let* ((comment-start-char (or comment-start "//"))
-        (align-pattern (concat "\\(\\s-*\\)" comment-start-char)))
+         (align-pattern (concat "\\(\\s-*\\)" comment-start-char)))
     (if (region-active-p)
         (align-regexp (region-beginning) (region-end) align-pattern)
       (save-excursion
@@ -109,6 +109,6 @@ With argument ARG, do this that many times."
     - 在项目中: 相对于项目根目录的父目录的路径"
   (when-let* ((file-name (buffer-file-name))
               (true-file-name (file-truename file-name)))
-    (if-let ((project-root (projectile-project-root)))
+    (if-let* ((project-root (projectile-project-root)))
         (file-relative-name true-file-name (parent-directory project-root))
       true-file-name)))
