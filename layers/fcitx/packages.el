@@ -77,4 +77,4 @@ Each entry is either:
     (setq fcitx-use-dbus 'fcitx5)
     (setq fcitx-remote-command "fcitx5-remote")
     (fcitx-aggressive-setup)
-    (fcitx-prefix-keys-add "M-m" "C-M-m" "C-h")))
+    (fcitx-prefix-keys-add "M-m" "C-M-m" "C-h" "C-c" "C-x" "M-RET")))
